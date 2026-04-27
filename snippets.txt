@@ -1,0 +1,49 @@
+for (int i = 0; i < n; ++i) arr[i] = 0;
+---
+if (ptr != nullptr && ptr->val != expected) return;
+---
+std::vector<std::string> result = split(input, ',');
+---
+while (!q.empty()) { auto x = q.front(); q.pop(); }
+---
+std::sort(v.begin(), v.end(), [](auto& a, auto& b) { return a < b; });
+---
+auto it = std::find_if(v.begin(), v.end(), [](const auto& x) { return x > 0; });
+---
+node->next = new Node(val); node->next->prev = node;
+---
+if (left != nullptr && left->height() > right->height() + 1) rebalance();
+---
+return std::make_unique<Widget>(std::forward<Args>(args)...);
+---
+template<typename T> T clamp(T v, T lo, T hi) { return std::max(lo, std::min(hi, v)); }
+---
+for (auto it = m.begin(); it != m.end(); ) { if (!it->second) it = m.erase(it); else ++it; }
+---
+std::lock_guard<std::mutex> lock(mtx); cache[key] = value;
+---
+ssize_t n = recv(fd, buf, sizeof(buf), 0); if (n <= 0) return;
+---
+sockaddr_in addr{}; addr.sin_family = AF_INET; addr.sin_port = htons(5000);
+---
+int fd = open(path.c_str(), O_RDONLY); if (fd < 0) { perror("open"); return -1; }
+---
+uint32_t h = 0; for (char c : s) h = (h << 5) ^ (h >> 2) ^ (uint8_t)c;
+---
+assert(idx >= 0 && idx < (int)vec.size() && "index out of range");
+---
+std::unordered_map<std::string, int> freq; for (auto& w : words) freq[w]++;
+---
+const char* p = str; while (*p && *p != delim) ++p; return (int)(p - str);
+---
+if (errno != EINTR && errno != EAGAIN) { close(fd); throw std::runtime_error(strerror(errno)); }
+---
+for (const auto& [k, v] : map) { if (v.score() > best) { best = v.score(); key = k; } }
+---
+std::string buf(4096, '\0'); ssize_t n = read(fd, buf.data(), buf.size()); buf.resize(n);
+---
+auto cmp = [](const Node* a, const Node* b) { return a->dist > b->dist; };
+---
+reinterpret_cast<uint8_t*>(&val)[i] = (raw >> (i * 8)) & 0xFF;
+---
+while (std::getline(file, line)) { if (!line.empty() && line[0] != '#') process(line); }
