@@ -25,6 +25,7 @@ namespace Color {
   const std::string GREEN      = "\033[32m";
   const std::string RED        = "\033[31m";
   const std::string YELLOW     = "\033[38;2;255;200;0m";
+  const std::string YELLOW_BG  = "\033[48;2;255;200;0m\033[30m";
   const std::string GRAY       = "\033[90m";
   const std::string RESET      = "\033[0m";
   const std::string BOLD       = "\033[1m";
@@ -43,11 +44,10 @@ void printTargetLine(const std::string& line) {
 static void cursorBlinkingUnderline() { std::cout << "\033[3 q"; std::cout.flush(); }
 static void cursorRestore()           { std::cout << "\033[0 q"; std::cout.flush(); }
 
-static void overlayAt(int col, const std::string& s) {
-  std::cout << "\033[s"
-            << "\033[" << col << "G"
+static void overlayAt(int col, const std::string& s, int restoreCol) {
+  std::cout << "\033[" << col << "G"
             << s
-            << "\033[u";
+            << "\033[" << restoreCol << "G";
 }
 
 // Read a key with a millisecond timeout; returns -1 on timeout.
@@ -303,9 +303,9 @@ void runMultiplayer(bool isHost, const std::string& peerIP, BigramMemory& memory
       std::string ch = (idx < (int)pos)
         ? (typed_correct[idx] ? Color::GREEN : Color::RED) + std::string(1, target[idx]) + Color::RESET
         : Color::GRAY + std::string(1, target[idx]) + Color::RESET;
-      overlayAt(col, ch);
+      overlayAt(col, ch, (int)pos + 1);
     } else {
-      overlayAt(col, Color::YELLOW + "~" + Color::RESET);
+      overlayAt(col, Color::YELLOW_BG + std::string(1, target[col - 1]) + Color::RESET, (int)pos + 1);
     }
     std::cout.flush();
   };
