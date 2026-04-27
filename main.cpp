@@ -180,7 +180,7 @@ void printSummary(const StatsTracker& stats) {
   }
 }
 
-// Training round — returns chars typed, or -1 if ESC pressed.
+// Training round
 
 int runRound(StatsTracker& stats, std::function<std::string()> getLine) {
   std::string target = getLine();
@@ -243,15 +243,15 @@ void runMultiplayer(bool isHost, const std::string& peerIP, BigramMemory& memory
   Terminal::disableRawMode();
 
   if (isHost) {
-    std::cout << "Hosting on port 5000, waiting for opponent...\n" << std::flush;
+    std::cout << "Hosting on port 7777, waiting for opponent...\n" << std::flush;
     if (!net.hostAndWait()) {
-      std::cerr << "Failed to bind/accept on port 5000.\n";
+      std::cerr << "Failed to bind/accept on port 7777.\n";
       Terminal::enableRawMode();
       return;
     }
     std::cout << "Opponent connected!\n" << std::flush;
   } else {
-    std::cout << "Connecting to " << peerIP << ":5000...\n" << std::flush;
+    std::cout << "Connecting to " << peerIP << ":7777...\n" << std::flush;
     if (!net.connectTo(peerIP)) {
       std::cerr << "Could not connect to " << peerIP << ".\n";
       Terminal::enableRawMode();

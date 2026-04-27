@@ -25,7 +25,7 @@ public:
     static uint32_t mkPos(uint32_t pos) { return pos & 0x7FFFFFFFu; }
 
     // Host: bind port, wait for one client connection.
-    bool hostAndWait(int port = 5000) {
+    bool hostAndWait(int port = 7777) {
         int srv = ::socket(AF_INET, SOCK_STREAM, 0);
         if (srv < 0) return false;
         int opt = 1;
@@ -42,7 +42,7 @@ public:
     }
 
     // Client: connect to host.
-    bool connectTo(const std::string& ip, int port = 5000) {
+    bool connectTo(const std::string& ip, int port = 7777) {
         fd = ::socket(AF_INET, SOCK_STREAM, 0);
         if (fd < 0) return false;
         sockaddr_in addr{};
