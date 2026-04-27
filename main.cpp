@@ -384,7 +384,7 @@ void runMultiplayer(bool isHost, const std::string& peerIP, BigramMemory& memory
 
   // Redraw the ghost cursor based on current elapsed time.
   // Only renders in the untyped zone (ghostLinePos >= pos) to avoid fighting typed chars.
-  auto updateGhost = [&](bool force = false) {
+  /* auto updateGhost = [&](bool force = false) {
     if (!gs.playback) return;
 
     auto elapsed = (uint32_t)std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -415,9 +415,9 @@ void runMultiplayer(bool isHost, const std::string& peerIP, BigramMemory& memory
     }
 
     std::cout.flush();
-  };
+  }; */
 
-  updateGhost();
+  // updateGhost();
 
   while (pos < target.size()) {
     char c = Terminal::readKey();
@@ -448,11 +448,11 @@ void runMultiplayer(bool isHost, const std::string& peerIP, BigramMemory& memory
     stats.record({ target[pos], c, ms, correct });
     typed_correct[pos] = correct;
 
-    if (gs.recorder) {
+    /*if (gs.recorder) {
       auto elapsed = (uint32_t)std::chrono::duration_cast<std::chrono::milliseconds>(
           now - gs.sessionStart).count();
       gs.recorder->record(elapsed);
-    }
+    }*/
 
     if (correct) std::cout << Color::GREEN << c        << Color::RESET;
     else         std::cout << Color::RED   << target[pos] << Color::RESET;
