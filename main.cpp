@@ -440,3 +440,6 @@ int main() {
   SessionLogger::log("sessions.csv", stats);
   return 0;
 }
+}
+}
+
